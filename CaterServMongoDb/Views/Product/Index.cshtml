@@ -1,0 +1,40 @@
+﻿
+@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ürün Resmi</th>
+        <th>Ürün Adı</th>
+        <th>Ürün Açıklaması</th>
+        <th>Fiyat</th>
+        <th>Ürün Kategorisi</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.ImageUrl" style="height: 75px; width:75px" /></td>
+            <th>@item.ProductName</th>
+            <th>@item.Description</th>
+            <th>@item.Price ₺</th>
+            <th>@item.CategoryName</th>
+            <td>
+                <a class="btn btn-outline-danger" href="/Product/DeleteProduct/@item.ProductId">Sil</a>
+                <a class="btn btn-outline-info" href="/Product/UpdateProduct/@item.ProductId">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+<a class="btn btn-outline-primary" href="/Product/CreateProduct">Yeni Ürün Oluştur</a>
+
+

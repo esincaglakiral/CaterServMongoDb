@@ -1,0 +1,29 @@
+﻿
+@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kategoriler</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.CategoryId</th>
+            <td>@item.CategoryName</td>
+            <td>
+                <a class="btn btn-outline-danger" href="/Category/DeleteCategory/@item.CategoryId">Sil</a>
+                <a class="btn btn-outline-info" href="/Category/UpdateCategory/@item.CategoryId">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+<a class="btn btn-outline-primary" href="/Category/CreateCategory">Yeni Kategori Oluştur</a>
